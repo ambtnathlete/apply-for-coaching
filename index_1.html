@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Faster After 40 — The Executive Sports Science Blueprint</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+
+:root {
+  --white: #FFFFFF;
+  --off-white: #F7F7F6;
+  --light: #EFEFEE;
+  --rule: #E0DFDD;
+  --mid: #999896;
+  --dark-mid: #555452;
+  --ink: #111110;
+  --black: #0D0D0C;
+
+  --display: 'Bebas Neue', 'Arial Narrow', sans-serif;
+  --body: 'Inter', -apple-system, sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--white);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+/* ---- UTILITY ---- */
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 40px; }
+.wrap-narrow { max-width: 780px; margin: 0 auto; padding: 0 40px; }
+
+@media (max-width: 600px) {
+  .wrap, .wrap-narrow { padding: 0 24px; }
+}
+
+
+.brand-logo { display: flex; align-items: center; text-decoration: none; }
+.logo-img {
+  height: 36px;
+  width: auto;
+  display: block;
+  filter: invert(1); /* white on black → black on white to match page */
+}
+
+/* ---- NAV ---- */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--rule);
+  padding: 18px 0;
+}
+nav .inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+nav .brand {
+  font-family: var(--body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+}
+nav .nav-cta {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--white);
+  background: var(--ink);
+  padding: 10px 22px;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+nav .nav-cta:hover { opacity: 0.75; }
+
+/* ---- HERO ---- */
+.hero {
+  padding: 112px 0 96px;
+  border-bottom: 1px solid var(--rule);
+}
+.hero-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mid);
+  margin-bottom: 36px;
+}
+.hero h1 {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(52px, 7.5vw, 96px);
+  line-height: 1.02;
+  letter-spacing: 0.02em;
+  max-width: 960px;
+  color: var(--black);
+}
+.hero h1 em {
+  
+  font-weight: 400;
+}
+.hero-sub {
+  margin-top: 40px;
+  max-width: 560px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--dark-mid);
+  font-weight: 400;
+}
+.hero-sub b { color: var(--ink); font-weight: 500; }
+.hero-actions {
+  margin-top: 44px;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+.btn-primary {
+  display: inline-block;
+  background: var(--ink);
+  color: var(--white);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 17px 36px;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+.btn-primary:hover { opacity: 0.78; }
+.btn-primary:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+.hero-note {
+  font-size: 12px;
+  color: var(--mid);
+  letter-spacing: 0.02em;
+}
+
+/* ---- PROOF BAR ---- */
+.proof-bar {
+  padding: 48px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.proof-bar-inner {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  divide-color: var(--rule);
+  gap: 0;
+}
+.proof-stat {
+  padding: 0 40px;
+  border-right: 1px solid var(--rule);
+}
+.proof-stat:first-child { padding-left: 0; }
+.proof-stat:last-child { border-right: none; }
+.proof-stat .num {
+  font-family: var(--display);
+  font-size: 58px;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--black);
+  letter-spacing: 0.02em;
+}
+.proof-stat .num sup { font-size: 28px; }
+.proof-stat .label {
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--mid);
+  line-height: 1.5;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+@media (max-width: 640px) {
+  .proof-bar-inner { grid-template-columns: 1fr; }
+  .proof-stat { padding: 24px 0; border-right: none; border-bottom: 1px solid var(--rule); }
+  .proof-stat:last-child { border-bottom: none; }
+}
+
+/* ---- SECTION BASE ---- */
+.section {
+  padding: 96px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.section.alt { background: var(--off-white); }
+
+.section-eyebrow {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mid);
+  margin-bottom: 20px;
+}
+.section h2 {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(36px, 4.5vw, 54px);
+  line-height: 1.12;
+  color: var(--black);
+  letter-spacing: 0.02em;
+}
+.section h2 em {  }
+.section .lede {
+  margin-top: 20px;
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--dark-mid);
+  max-width: 580px;
+}
+
+/* ---- PAIN SECTION ---- */
+.pain-grid {
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--rule);
+  border-left: 1px solid var(--rule);
+}
+.pain-card {
+  padding: 36px 32px;
+  border-right: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.pain-card .tag {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mid);
+  margin-bottom: 16px;
+}
+.pain-card p {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--ink);
+  font-weight: 400;
+}
+
+@media (max-width: 760px) {
+  .pain-grid { grid-template-columns: 1fr; }
+}
+
+/* ---- PROOF / TESTIMONIAL ---- */
+.proof-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+  margin-top: 64px;
+}
+@media (max-width: 860px) {
+  .proof-section { grid-template-columns: 1fr; gap: 48px; }
+}
+
+.victor-video-wrap {
+  margin-top: 56px;
+  padding-top: 48px;
+  border-top: 1px solid var(--rule);
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 48px;
+  align-items: center;
+}
+.victor-video-label p {
+  margin-top: 10px;
+  font-size: 14px;
+  color: var(--dark-mid);
+  line-height: 1.5;
+}
+.victor-video {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  height: 0;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgba(0,0,0,0.06),
+    0 4px 16px rgba(0,0,0,0.12),
+    0 12px 40px rgba(0,0,0,0.14);
+}
+.victor-video iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+@media (max-width: 720px) {
+  .victor-video-wrap { grid-template-columns: 1fr; gap: 20px; }
+}
+
+.jared-video {
+  margin-top: 24px;
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgba(0,0,0,0.06),
+    0 4px 16px rgba(0,0,0,0.12),
+    0 12px 40px rgba(0,0,0,0.14);
+}
+.jared-video iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.proof-quote-block {
+  padding-top: 8px;
+}
+.proof-quote-text {
+  font-family: var(--body);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--black);
+  border-left: 1px solid var(--ink);
+  padding-left: 24px;
+}
+.proof-cite {
+  margin-top: 20px;
+  font-size: 12px;
+  color: var(--mid);
+  letter-spacing: 0.04em;
+  padding-left: 24px;
+}
+
+/* HR panel */
+.hr-panel {
+  background: var(--white);
+  border: 1px solid var(--rule);
+  padding: 32px;
+}
+.hr-panel-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 4px;
+}
+.hr-panel-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mid);
+}
+.hr-panel-tag {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--mid);
+}
+.hr-chart-svg { width: 100%; height: auto; display: block; margin: 20px 0 0; }
+.hr-legend {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--rule);
+}
+.hr-legend-item {}
+.hr-legend-item .l-label {
+  font-size: 10px;
+  color: var(--mid);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.hr-legend-item .l-val {
+  font-family: var(--display);
+  font-size: 26px;
+  font-weight: 400;
+  color: var(--black);
+  line-height: 1.1;
+  margin-top: 2px;
+}
+.hr-legend-item.highlight .l-val { color: var(--ink); font-weight: 500; }
+
+/* ---- SOLUTION ---- */
+.feature-list { margin-top: 56px; }
+.feature-row {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 40px;
+  padding: 36px 0;
+  border-top: 1px solid var(--rule);
+}
+.feature-row:last-child { border-bottom: 1px solid var(--rule); }
+.feature-label {
+  font-family: var(--body);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mid);
+  line-height: 1.3;
+  padding-top: 4px;
+}
+.feature-body h3 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--black);
+  margin-bottom: 8px;
+  letter-spacing: 0.02em;
+}
+.feature-body p {
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--dark-mid);
+}
+
+@media (max-width: 720px) {
+  .feature-row { grid-template-columns: 1fr; gap: 8px; }
+}
+
+/* ---- QUALIFIER ---- */
+.q-split {
+  margin-top: 48px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border: 1px solid var(--rule);
+}
+.q-col {
+  padding: 40px 36px;
+}
+.q-col:first-child {
+  border-right: 1px solid var(--rule);
+}
+.q-col-head {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mid);
+  margin-bottom: 24px;
+}
+.q-col ul { list-style: none; }
+.q-col ul li {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--dark-mid);
+  padding: 8px 0;
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+.q-col ul li:last-child { border-bottom: none; }
+.q-col.yes ul li { color: var(--ink); }
+.q-col .mark {
+  font-size: 12px;
+  flex-shrink: 0;
+  color: var(--mid);
+}
+.q-col.yes .mark { color: var(--black); }
+
+@media (max-width: 640px) {
+  .q-split { grid-template-columns: 1fr; }
+  .q-col:first-child { border-right: none; border-bottom: 1px solid var(--rule); }
+}
+
+/* ---- FINAL CTA ---- */
+.final {
+  padding: 120px 0 128px;
+  text-align: center;
+}
+.final h2 {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(40px, 5.5vw, 68px);
+  line-height: 1.1;
+  color: var(--black);
+  max-width: 700px;
+  margin: 0 auto 20px;
+  letter-spacing: 0.02em;
+}
+.final h2 em {  }
+.final p {
+  font-size: 15px;
+  color: var(--dark-mid);
+  max-width: 460px;
+  margin: 0 auto 40px;
+  line-height: 1.7;
+}
+.final .final-note {
+  margin-top: 18px;
+  font-size: 12px;
+  color: var(--mid);
+  letter-spacing: 0.04em;
+}
+
+/* ---- FOOTER ---- */
+footer {
+  padding: 32px 0;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+footer .f-brand {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mid);
+}
+footer .f-note {
+  font-size: 11px;
+  color: var(--mid);
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 600px) {
+  footer { flex-direction: column; gap: 12px; text-align: center; }
+}
+
+
+/* ---- TESTIMONIALS ---- */
+.testimonials-section {
+  padding: 96px 0;
+  border-bottom: 1px solid var(--rule);
+  background: var(--white);
+}
+.testimonials-grid {
+  margin-top: 56px;
+  columns: 3;
+  column-gap: 20px;
+}
+@media (max-width: 900px) { .testimonials-grid { columns: 2; } }
+@media (max-width: 560px) { .testimonials-grid { columns: 1; } }
+
+.t-card {
+  break-inside: avoid;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgba(0,0,0,0.06),
+    0 4px 12px rgba(0,0,0,0.10),
+    0 8px 32px rgba(0,0,0,0.14),
+    0 0 40px rgba(0,0,0,0.10);
+}
+.t-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="wrap">
+    <div class="inner">
+      <a class="brand-logo" href="#"><img src="images/t1.png" alt="Beer League Blueprint" class="logo-img"></a>
+      <a class="nav-cta" href="https://ambtnathlete.com/ambtn-athlete-application">Apply Now</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-label">Beer League Blueprint · Executive Framework</div>
+    <h1>Your hockey IQ is still elite.<br>Your body just isn't cashing the cheques.</h1>
+    <p class="hero-sub">
+      The executive-level sports science blueprint to reclaim your explosive first step, clear acid buildup between shifts, and safely extend your prime —
+      <b>without sacrificing your career or your family time.</b>
+    </p>
+    <div class="hero-actions">
+      <a href="https://ambtnathlete.com/ambtn-athlete-application" class="btn-primary">Apply Now</a>
+      <span class="hero-note">1-on-1 · Application required · Not for everyone</span>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF BAR -->
+<section class="proof-bar">
+  <div class="wrap">
+    <div class="proof-bar-inner">
+      <div class="proof-stat">
+        <div class="num">33.4<sup>%</sup></div>
+        <div class="label">Repeat sprint improvement<br>in 5 weeks</div>
+      </div>
+      <div class="proof-stat">
+        <div class="num">52<sup>%</sup></div>
+        <div class="label">Heart-rate recoverability gain<br>in 5 weeks</div>
+      </div>
+      <div class="proof-stat">
+        <div class="num">3×</div>
+        <div class="label">Sessions per week —<br>all the time you need</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAIN -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-eyebrow">The Real Problem</div>
+    <h2>You took 10–15 years off to build<br>a career and raise a family.<br>The game didn't wait.</h2>
+    <p class="lede">You're putting in the gym work. But random training routines and generic cardio have zero hockey specificity. Despite the effort, you're still getting exposed on shifts that used to be automatic.</p>
+
+    <div class="pain-grid">
+      <div class="pain-card">
+        <div class="tag">First-Step Power</div>
+        <p>Losing open-ice puck races to 25-year-olds because your first step is gone.</p>
+      </div>
+      <div class="pain-card">
+        <div class="tag">Conditioning</div>
+        <p>Gassing out halfway through the second period — every single shift.</p>
+      </div>
+      <div class="pain-card">
+        <div class="tag">Joint Mobility</div>
+        <p>Tight hips and stiff knees that won't let you get low in your stride anymore.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF -->
+<section class="section alt">
+  <div class="wrap">
+    <div class="section-eyebrow">Measured Outcomes</div>
+    <h2>This isn't theory.<br>It's a verified result.</h2>
+
+    <div class="proof-section">
+      <div class="proof-quote-block">
+        <p class="proof-quote-text">"I'm not sure I've ever felt this effective in games before."</p>
+        <p class="proof-cite">Jared K. — Beer League Blueprint client · 5-week program<br>33.4% repeat sprint improvement · 52% HR recoverability gain</p>
+        <div class="jared-video">
+          <iframe
+            src="https://www.youtube.com/embed/sJ_7t_8O5H4"
+            title="Jared Kohlmann testimonial — Faster After 40 Framework"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+
+      <div class="hr-panel">
+        <div class="hr-panel-head">
+          <span class="hr-panel-label">Shift Recovery — HR Decay</span>
+          <span class="hr-panel-tag">Week 1 vs Week 5</span>
+        </div>
+        <svg class="hr-chart-svg" viewBox="0 0 340 170" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Heart rate decay chart showing faster recovery in week 5 compared to week 1">
+          <!-- grid -->
+          <line x1="0" y1="40" x2="340" y2="40" stroke="#E0DFDD" stroke-width="1"/>
+          <line x1="0" y1="85" x2="340" y2="85" stroke="#E0DFDD" stroke-width="1"/>
+          <line x1="0" y1="130" x2="340" y2="130" stroke="#E0DFDD" stroke-width="1"/>
+
+          <!-- Week 1 — slow decay, dashed -->
+          <path d="M0,24 C35,28 65,50 95,74 C130,100 165,118 205,126 C255,134 300,136 340,137"
+                fill="none" stroke="#BFBEBC" stroke-width="2" stroke-dasharray="5,4"/>
+
+          <!-- Week 5 — fast decay, solid -->
+          <path d="M0,24 C28,32 50,70 78,106 C100,130 128,138 165,140 C225,142 285,141 340,141"
+                fill="none" stroke="#111110" stroke-width="2.5"/>
+
+          <!-- labels -->
+          <text x="4" y="16" fill="#999896" font-family="Inter" font-size="9" font-weight="500" letter-spacing="0.08em">SHIFT ENDS</text>
+          <text x="168" y="156" fill="#111110" font-family="Inter" font-size="9" font-weight="600">RECOVERED — WK5</text>
+          <text x="210" y="120" fill="#BFBEBC" font-family="Inter" font-size="9">WK1</text>
+        </svg>
+        <div class="hr-legend">
+          <div class="hr-legend-item">
+            <div class="l-label">Baseline</div>
+            <div class="l-val">Week 1</div>
+          </div>
+          <div class="hr-legend-item highlight">
+            <div class="l-label">Recoverability gain</div>
+            <div class="l-val">+52%</div>
+          </div>
+          <div class="hr-legend-item">
+            <div class="l-label">Result</div>
+            <div class="l-val">Week 5</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="victor-video-wrap">
+      <div class="victor-video-label">
+        <span class="section-eyebrow" style="margin:0;">Client Experience</span>
+        <p>Victor K. — on what changed after joining the framework</p>
+      </div>
+      <div class="victor-video">
+        <iframe
+          src="https://www.youtube.com/embed/-B3RrEZD-8E"
+          title="Victor testimonial — Faster After 40 Framework"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-eyebrow">The Solution</div>
+    <h2>The Faster After 40 Framework.<br>Done for you. Built for this.</h2>
+    <p class="lede">A 1-on-1 sports science system engineered strictly for the established 40+ men's league player. No generic cardio. No guessing. No risking your joints on workouts you don't have time to recover from.</p>
+
+    <div class="feature-list">
+      <div class="feature-row">
+        <div class="feature-label">Time-Efficient Training</div>
+        <div class="feature-body">
+          <h3>Maximum on-ice ROI from three 60-minute sessions per week</h3>
+          <p>Fully customized around your work and family schedule. No 90-minute sessions you can't sustain and no generic programming that doesn't transfer to the ice.</p>
+        </div>
+      </div>
+      <div class="feature-row">
+        <div class="feature-label">Bulletproof Joint Foundation</div>
+        <div class="feature-body">
+          <h3>Joint-safe isometric loading for tendon resilience</h3>
+          <p>Get low in your stride again with zero shear force on your joints. Built for athletes who can't afford to be sidelined by an injury from their own training.</p>
+        </div>
+      </div>
+      <div class="feature-row">
+        <div class="feature-label">All-Game Energy</div>
+        <div class="feature-body">
+          <h3>Advanced conditioning that clears acid buildup between shifts</h3>
+          <p>Third-period speed — without frying your nervous system. The exact metabolic conditioning mechanism behind Jared's 52% recoverability improvement.</p>
+        </div>
+      </div>
+      <div class="feature-row">
+        <div class="feature-label">Executive Accountability</div>
+        <div class="feature-body">
+          <h3>Weekly check-ins and direct video feedback</h3>
+          <p>You're never guessing. You're never stalling. We ensure you stay in momentum — and the results follow a measurable, trackable timeline.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+  <div class="wrap">
+    <div class="section-eyebrow">Real Results. Real Players.</div>
+    <h2>What clients are saying<br>after just weeks on the framework.</h2>
+    <div class="testimonials-grid">
+      <div class="t-card"><img src="images/t2.jpg" alt="Client testimonial 1" loading="lazy"></div>
+      <div class="t-card"><img src="images/t3.jpg" alt="Client testimonial 2" loading="lazy"></div>
+      <div class="t-card"><img src="images/t4.jpg" alt="Client testimonial 3" loading="lazy"></div>
+      <div class="t-card"><img src="images/t5.jpg" alt="Client testimonial 4" loading="lazy"></div>
+      <div class="t-card"><img src="images/t6.jpg" alt="Client testimonial 5" loading="lazy"></div>
+      <div class="t-card"><img src="images/t7.jpg" alt="Client testimonial 6" loading="lazy"></div>
+      <div class="t-card"><img src="images/t8.png" alt="Client testimonial 7" loading="lazy"></div>
+      <div class="t-card"><img src="images/t9.jpg" alt="Client testimonial 8" loading="lazy"></div>
+      <div class="t-card"><img src="images/t10.jpg" alt="Client testimonial" loading="lazy"></div>
+      <div class="t-card"><img src="images/t11.jpg" alt="Client testimonial" loading="lazy"></div>
+      <div class="t-card"><img src="images/t12.jpg" alt="Client testimonial" loading="lazy"></div>
+      <div class="t-card"><img src="images/t13.jpg" alt="Client testimonial" loading="lazy"></div>
+      <div class="t-card"><img src="images/t14.jpg" alt="Client testimonial" loading="lazy"></div>
+      <div class="t-card"><img src="images/t15.jpg" alt="Client testimonial" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<!-- QUALIFIER -->
+<section class="section alt">
+  <div class="wrap-narrow">
+    <div class="section-eyebrow">Who This Is For</div>
+    <h2>This isn't a $50 PDF.<br>It requires a real investment.</h2>
+
+    <div class="q-split">
+      <div class="q-col">
+        <div class="q-col-head">Not for you if</div>
+        <ul>
+          <li><span class="mark">—</span> You want a cheap, generic workout plan</li>
+          <li><span class="mark">—</span> You're not ready for 1-on-1 coaching investment</li>
+          <li><span class="mark">—</span> You want to "try it out" with low commitment</li>
+          <li><span class="mark">—</span> You're fine just surviving your shifts</li>
+        </ul>
+      </div>
+      <div class="q-col yes">
+        <div class="q-col-head">Built for you if</div>
+        <ul>
+          <li><span class="mark">✓</span> You're an established professional ready to invest</li>
+          <li><span class="mark">✓</span> You want to dictate the pace of play again</li>
+          <li><span class="mark">✓</span> You want your prime extended 10–15 more years</li>
+          <li><span class="mark">✓</span> You want to prove you still have it</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final" id="apply">
+  <div class="wrap">
+    <h2>Stop surviving games.<br>Start dictating the pace.</h2>
+    <p>Apply now to see if you qualify for the Faster After 40 Framework.</p>
+    <a href="https://ambtnathlete.com/ambtn-athlete-application" class="btn-primary">Apply Now</a>
+    <p class="final-note">Limited 1-on-1 spots · Application reviewed within 48 hours</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="width:100%; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+    <span class="f-brand">Faster After 40 — Beer League Blueprint</span>
+    <span class="f-note">An AMBTN Athlete Framework</span>
+  </div>
+</footer>
+
+</body>
+</html>
